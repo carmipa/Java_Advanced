@@ -1,4 +1,4 @@
-# 🚀 Java Advanced - FIAP 2024
+# 🚀 Java Advanced - FIAP 2025
 
 Este repositório contém os projetos e atividades desenvolvidos durante a disciplina **Java Advanced** no curso de Análise e Desenvolvimento de Sistemas da FIAP.
 
