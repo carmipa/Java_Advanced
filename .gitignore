@@ -89,3 +89,99 @@ pnpm-debug.log*
 # Arquivos de sistema do macOS e Windows
 .DS_Store
 Thumbs.db
+
+# Spring Boot
+*.log
+spring.log
+target/
+!src/main/resources/static/
+!src/main/resources/templates/
+!src/main/resources/application.properties
+!src/main/resources/application.yml
+!src/main/resources/application.yaml
+
+# Spring Boot DevTools (evita reinicialização desnecessária do app)
+spring-boot-devtools.properties
+
+# Lombok
+.lombok.config
+
+# Web Services (WST)
+.wstserver/
+.wtpmodules/
+wtpwebapps/
+.wtp/
+
+# Arquivos de Configuração Temporários do Tomcat
+logs/
+*.swp
+*.bak
+*.tmp
+*.sublime-workspace
+*.sublime-project
+
+# Arquivos de testes e relatórios
+test-output/
+surefire-reports/
+failsafe-reports/
+jacoco/
+
+# Arquivos gerados por IDEs e ferramentas
+bin/
+tmp/
+lib/
+target/
+dist/
+out/
+!gradle-wrapper.jar
+.gradle/
+
+# IDE e Build Cache
+.gradle/
+.idea/
+.classpath
+.project
+.settings/
+
+# Arquivos do Swagger (se aplicável)
+.swagger-codegen/
+
+# Arquivos gerados pelo STS (Spring Tool Suite)
+.sts4-cache/
+
+# Arquivos do Lombok (caso use Lombok)
+.lombok/
+
+# Arquivos de credenciais do AWS (caso use AWS SDK)
+.aws/
+
+# Arquivos gerados por servidores locais
+logs/
+*.log
+*.out
+*.err
+nohup.out
+
+# Arquivos de cache do Java
+.jenkins/
+.jmc/
+.jfr/
+
+# Configuração de banco de dados local (caso use H2, PostgreSQL, MySQL)
+*.mv.db
+*.h2.db
+*.pgdata
+*.db-journal
+
+# Arquivos do OpenAPI / Swagger
+openapi.json
+swagger-ui.html
+
+# Configuração de Servidores Tomcat e JBoss
+.tomcat/
+.jboss/
+
+# Arquivos do Kubernetes (se aplicável)
+kubernetes/
+helm/
+
