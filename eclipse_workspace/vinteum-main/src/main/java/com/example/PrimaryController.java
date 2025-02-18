@@ -20,6 +20,11 @@ public class PrimaryController {
     public void turno(){
         jogo.distribuirCartaParaJogador(jogo.jogador);
         jogo.distribuirCartaParaJogador(jogo.computador);
+        
+		if (jogo.acabou()) {
+			resultado.setText(jogo.resultado());
+		}
+        
         atualizar();
 
     }

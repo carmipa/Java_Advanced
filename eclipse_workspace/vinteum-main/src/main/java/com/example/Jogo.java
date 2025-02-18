@@ -15,25 +15,42 @@ public class Jogo {
     public Carta distribuirCartaParaJogador(Jogador jogador){
 
         if (jogador.parou())
-            return null;
+          return null;
           Carta carta = monte.virar();
           jogador.receberCarta(carta);
           return carta;
     }
 
     public boolean acabou(){
-        if (jogador.getPontos() > 21)
-            return true;
-        if (computador.getPontos() > 21)
-            return true;
-        if (computador.parou() && jogador.parou())
-            return true;
-        return false;
+        // return jogador.getPontos() > 21 || computador.getPontos() > 21 || computador.parou() && jogador.parou();
+        return alguemEstourou() || computador.parou() && jogador.parou();
     }
 
-    public String resulata(){
-        return "Descubra qual é o resultado...";
+    public String resultado(){
+        
+    	if (jogadorEstourou() && computadorEstourou() || jogador.getPontos() == computador.getPontos()) {
+    		return "Empatou";
+    	}
+    	
+		if (computadorEstourou() || !jogadorEstourou() && jogador.getPontos() > computador.getPontos()) {
+			return "Jogador Ganhou";
+		}
+		
+		return "Jogador perdeu";
+    	
     }
+    
+    private boolean jogadorEstourou() {
+    	return jogador.getPontos() > 21;
+    }
+    
+	private boolean computadorEstourou() {
+		return computador.getPontos() > 21;
+	}
+	
+	boolean alguemEstourou() {
+		return jogadorEstourou() || computadorEstourou();
+	}
 }
 
 // arlie return
