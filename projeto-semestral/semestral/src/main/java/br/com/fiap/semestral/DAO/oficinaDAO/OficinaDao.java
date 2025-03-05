@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.oficinaDAO;
+package br.com.fiap.semestral.DAO.oficinaDAO;
 
 import br.com.fiap.exceptions.oficinaException.OficinaNotFoundException;
 import br.com.fiap.exceptions.oficinaException.OficinaNotSavedException;

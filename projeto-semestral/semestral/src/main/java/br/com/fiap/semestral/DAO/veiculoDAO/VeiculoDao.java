@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.veiculoDAO;
+package br.com.fiap.semestral.DAO.veiculoDAO;
 
 import br.com.fiap.exceptions.veiculoException.VeiculoNotFoundException;
 import br.com.fiap.exceptions.veiculoException.VeiculoNotSavedException;

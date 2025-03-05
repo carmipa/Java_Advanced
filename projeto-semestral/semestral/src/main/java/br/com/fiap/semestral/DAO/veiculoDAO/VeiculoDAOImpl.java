@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.veiculoDAO;
+package br.com.fiap.semestral.DAO.veiculoDAO;
 
 import br.com.fiap.config.DatabaseConnectionFactory;
 import br.com.fiap.exceptions.veiculoException.VeiculoNotFoundException;

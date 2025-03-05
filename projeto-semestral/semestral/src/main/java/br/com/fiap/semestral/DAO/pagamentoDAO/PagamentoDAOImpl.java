@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.pagamentoDAO;
+package br.com.fiap.semestral.DAO.pagamentoDAO;
 
 import br.com.fiap.config.DatabaseConnectionFactory;
 import br.com.fiap.exceptions.pagamentoException.PagamentoNotFoundException;

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.exceptions.pecasException;
+package br.com.fiap.semestral.exceptions.pecasException;
 
 public class PecasNotSavedException extends Exception{
     public PecasNotSavedException(String message) {

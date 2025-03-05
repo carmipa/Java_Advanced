@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.pagamentoDAO;
+package br.com.fiap.semestral.DAO.pagamentoDAO;
 
 import br.com.fiap.exceptions.pagamentoException.PagamentoNotFoundException;
 import br.com.fiap.exceptions.pagamentoException.PagamentoNotSavedException;

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.exceptions.pecasException;
+package br.com.fiap.semestral.exceptions.pecasException;
 
 public class PecasNotFoundException extends Exception{
     public PecasNotFoundException(String message) {

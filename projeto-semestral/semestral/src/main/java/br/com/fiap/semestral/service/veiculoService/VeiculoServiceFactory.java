@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.service.veiculoService;
+package br.com.fiap.semestral.service.veiculoService;
 
 public class VeiculoServiceFactory {
 

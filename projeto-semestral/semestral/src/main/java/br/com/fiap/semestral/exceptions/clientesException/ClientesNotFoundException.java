@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.exceptions.clientesException;
+package br.com.fiap.semestral.exceptions.clientesException;
 
 public class ClientesNotFoundException extends Exception {
 

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.externalInterface;
+package br.com.fiap.semestral.externalInterface;
 
 import java.io.IOException;
 import java.net.URI;

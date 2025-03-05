@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.exceptions.pagamentoException;
+package br.com.fiap.semestral.exceptions.pagamentoException;
 
 public class PagamentoNotFoundException extends Exception{
     public PagamentoNotFoundException(String message) {

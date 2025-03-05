@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.config;
+package br.com.fiap.semestral.config;
 
 public class DatabaseConfig {
 

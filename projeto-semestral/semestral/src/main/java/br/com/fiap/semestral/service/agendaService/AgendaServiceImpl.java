@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.service.agendaService;
+package br.com.fiap.semestral.service.agendaService;
 
 import br.com.fiap.DAO.agendaDAO.AgendaDaoFactory;
 import br.com.fiap.DAO.agendaDAO.AgendaDao;

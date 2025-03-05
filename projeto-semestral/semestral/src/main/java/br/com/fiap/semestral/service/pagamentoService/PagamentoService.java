@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.service.pagamentoService;
+package br.com.fiap.semestral.service.pagamentoService;
 
 import br.com.fiap.exceptions.pagamentoException.PagamentoNotFoundException;
 import br.com.fiap.exceptions.pagamentoException.PagamentoNotSavedException;

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.service.veiculoService;
+package br.com.fiap.semestral.service.veiculoService;
 
 import br.com.fiap.DAO.veiculoDAO.VeiculoDao;
 import br.com.fiap.exceptions.veiculoException.VeiculoNotFoundException;

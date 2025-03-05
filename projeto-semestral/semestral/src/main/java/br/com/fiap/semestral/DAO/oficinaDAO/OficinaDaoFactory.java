@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.oficinaDAO;
+package br.com.fiap.semestral.DAO.oficinaDAO;
 
 public class OficinaDaoFactory {
 

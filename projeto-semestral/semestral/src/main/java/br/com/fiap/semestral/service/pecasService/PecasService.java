@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.service.pecasService;
+package br.com.fiap.semestral.service.pecasService;
 
 import br.com.fiap.exceptions.pecasException.PecasNotFoundException;
 import br.com.fiap.exceptions.pecasException.PecasNotSavedException;

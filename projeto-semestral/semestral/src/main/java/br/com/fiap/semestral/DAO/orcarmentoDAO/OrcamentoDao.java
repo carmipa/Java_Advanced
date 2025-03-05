@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.orcarmentoDAO;
+package br.com.fiap.semestral.DAO.orcarmentoDAO;
 
 import br.com.fiap.exceptions.orcamentoException.OrcamentoNotFoundException;
 import br.com.fiap.exceptions.orcamentoException.OrcamentoNotSavedException;

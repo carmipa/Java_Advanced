@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.agendaDAO;
+package br.com.fiap.semestral.DAO.agendaDAO;
 
 
 public class AgendaDaoFactory {

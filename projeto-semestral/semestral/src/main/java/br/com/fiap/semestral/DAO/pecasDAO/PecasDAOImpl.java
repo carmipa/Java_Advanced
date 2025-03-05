@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.pecasDAO;
+package br.com.fiap.semestral.DAO.pecasDAO;
 
 import br.com.fiap.config.DatabaseConnectionFactory;
 import br.com.fiap.exceptions.pecasException.PecasNotFoundException;

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.orcarmentoDAO;
+package br.com.fiap.semestral.DAO.orcarmentoDAO;
 
 public class OrcamentoDaoFactory {
 

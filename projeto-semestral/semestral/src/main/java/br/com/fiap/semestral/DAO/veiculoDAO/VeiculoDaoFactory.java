@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.veiculoDAO;
+package br.com.fiap.semestral.DAO.veiculoDAO;
 
 public class VeiculoDaoFactory {
 

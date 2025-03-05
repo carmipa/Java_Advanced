@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.interfacesModel;
+package br.com.fiap.semestral.interfacesModel;
 
 public interface IOrcamento {
 	

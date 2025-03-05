@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.service.orcamentoService;
+package br.com.fiap.semestral.service.orcamentoService;
 
 import br.com.fiap.DAO.orcarmentoDAO.OrcamentoDao;
 import br.com.fiap.DAO.orcarmentoDAO.OrcamentoDaoFactory;

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.exceptions.veiculoException;
+package br.com.fiap.semestral.exceptions.veiculoException;
 
 public class VeiculoNotSavedException extends Exception{
     public VeiculoNotSavedException(String message) {

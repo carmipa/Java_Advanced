@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.model;
+package br.com.fiap.semestral.model;
 
 import com.google.gson.annotations.SerializedName;
 

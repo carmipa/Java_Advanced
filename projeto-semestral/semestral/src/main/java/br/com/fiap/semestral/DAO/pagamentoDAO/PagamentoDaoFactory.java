@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.pagamentoDAO;
+package br.com.fiap.semestral.DAO.pagamentoDAO;
 
 public class PagamentoDaoFactory {
 

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.pecasDAO;
+package br.com.fiap.semestral.DAO.pecasDAO;
 
 public class PecasDaoFactory {
 

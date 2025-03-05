@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.Controller;
+package br.com.fiap.semestral.Controller;
 
 import br.com.fiap.DTO.PagamentoDto;
 import br.com.fiap.exceptions.pagamentoException.PagamentoNotFoundException;

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.interfacesModel;
+package br.com.fiap.semestral.interfacesModel;
 
 import br.com.fiap.model.Orcamento;
 import br.com.fiap.model.Pecas;

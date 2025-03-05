@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.exceptions.veiculoException;
+package br.com.fiap.semestral.exceptions.veiculoException;
 
 public class VeiculoNotFoundException extends Exception{
     public VeiculoNotFoundException(String message) {

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.clientesDAO;
+package br.com.fiap.semestral.DAO.clientesDAO;
 
 import br.com.fiap.config.DatabaseConnectionFactory;
 import br.com.fiap.exceptions.clientesException.ClientesNotFoundException;

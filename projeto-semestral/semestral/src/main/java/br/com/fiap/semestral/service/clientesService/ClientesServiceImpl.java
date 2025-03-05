@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.service.clientesService;
+package br.com.fiap.semestral.service.clientesService;
 
 import br.com.fiap.DAO.clientesDAO.ClientesDao;
 import br.com.fiap.DAO.clientesDAO.ClientesDaoFactory;

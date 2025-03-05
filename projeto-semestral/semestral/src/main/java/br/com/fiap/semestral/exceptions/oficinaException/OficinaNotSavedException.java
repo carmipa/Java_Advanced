@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.exceptions.oficinaException;
+package br.com.fiap.semestral.exceptions.oficinaException;
 
 public class OficinaNotSavedException extends Exception{
     public OficinaNotSavedException(String message) {

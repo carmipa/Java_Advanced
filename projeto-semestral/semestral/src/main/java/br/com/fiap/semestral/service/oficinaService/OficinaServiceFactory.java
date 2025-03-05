@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.service.oficinaService;
+package br.com.fiap.semestral.service.oficinaService;
 
 import br.com.fiap.model.Oficina;
 

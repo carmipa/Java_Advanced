@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DAO.agendaDAO;
+package br.com.fiap.semestral.DAO.agendaDAO;
 
 import br.com.fiap.config.DatabaseConnectionFactory;
 import br.com.fiap.exceptions.agendaException.AgendaNotFoundException;

@@ -1,4 +1,4 @@
-package com.br.fiap.semestral.DTO;
+package br.com.fiap.semestral.DTO;
 
 public class PagamentoDto {
 
