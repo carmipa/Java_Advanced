@@ -7,103 +7,126 @@ import br.com.fiap.exceptions.agendaException.AgendaUnsupportedServiceOperationE
 import br.com.fiap.model.Agenda;
 import br.com.fiap.service.agendaService.AgendaService;
 import br.com.fiap.service.agendaService.AgendaServiceFactory;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.*;
-import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Logger;
 
-@Path("/rest/agenda")
+@RestController // Indica que esta classe é um controlador REST (os métodos retornarão dados, normalmente em JSON)
+@RequestMapping("/rest/agenda") // Define o caminho base para os endpoints deste controlador
 public class AgendaController {
 
+    // Cria uma instância do serviço de agenda utilizando um factory para desacoplar a criação do serviço
     private final AgendaService agendaService = AgendaServiceFactory.create();
-    private static final Logger logger = Logger.getLogger(AgendaController.class.getName());
 
-    @POST
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response add(AgendaDto input) {
-        if (input.getCodigo() == null) {
-            try {
-                Agenda agenda = new Agenda();
-                agenda.setDataAgendamento(input.getDataAgendamento());
-                agenda.setObsAgenda(input.getObsAgenda());
+    // Logger para registrar mensagens de log
+    private static final Logger logger = LoggerFactory.getLogger(AgendaController.class);
 
-                // Chamar o serviço para criar a agenda
-                agenda = this.agendaService.create(agenda);
-
-                return Response
-                        .status(Response.Status.CREATED)
-                        .entity(agenda)
-                        .build();
-            } catch (AgendaUnsupportedServiceOperationExcept e) {
-                return Response.status(Response.Status.BAD_REQUEST)
-                        .entity(Map.of("mensagem", e.getMessage())).build();
-            } catch (SQLException | AgendaNotSavedException e) {
-                logger.severe("Erro ao criar agenda: " + e.getMessage());
-                return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                        .entity(Map.of("mensagem", "Erro inesperado ao tentar inserir uma agenda")).build();
-            }
-        } else {
-            return Response.status(Response.Status.BAD_REQUEST)
-                    .entity(Map.of("mensagem", "Este método só permite a criação de novas agendas sem código")).build();
+    /**
+     * Endpoint para criação de uma nova agenda.
+     * Método HTTP POST que recebe um objeto AgendaDto no corpo da requisição.
+     */
+    @PostMapping
+    public ResponseEntity<?> add(@RequestBody AgendaDto input) {
+        // Verifica se o DTO não possui um código (pois este método é destinado apenas à criação de novas agendas)
+        if (input.getCodigo() != null) {
+            return ResponseEntity.badRequest()
+                    .body(Map.of("mensagem", "Este método só permite a criação de novas agendas sem código"));
         }
-    }
-
-    @GET
-    @Path("/all")
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response findAll(){
-        List<Agenda> agendas = this.agendaService.findAll();
-        if (agendas == null || agendas.isEmpty()) {
-            return Response.status(Response.Status.NO_CONTENT).build();
-        } else {
-            return Response.status(Response.Status.OK).entity(agendas).build();
-        }
-    }
-
-    @PUT
-    @Path("/{id}")
-    @Consumes(MediaType.APPLICATION_JSON)
-    @Produces(MediaType.APPLICATION_JSON)
-    public Response update(@PathParam("id") Long id, AgendaDto input){
         try {
+            // Cria uma nova instância da entidade Agenda e popula com os dados do DTO
+            Agenda agenda = new Agenda();
+            agenda.setDataAgendamento(input.getDataAgendamento());
+            agenda.setObsAgenda(input.getObsAgenda());
+
+            // Chama o serviço para criar a agenda e armazena o objeto persistido
+            agenda = agendaService.create(agenda);
+
+            // Retorna a agenda criada com status HTTP 201 (Created)
+            return ResponseEntity.status(HttpStatus.CREATED).body(agenda);
+        } catch (AgendaUnsupportedServiceOperationExcept e) {
+            // Se a operação não for suportada, retorna status 400 (Bad Request) com a mensagem de erro
+            return ResponseEntity.badRequest().body(Map.of("mensagem", e.getMessage()));
+        } catch (SQLException | AgendaNotSavedException e) {
+            // Registra o erro no log e retorna status 500 (Internal Server Error)
+            logger.error("Erro ao criar agenda: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("mensagem", "Erro inesperado ao tentar inserir uma agenda"));
+        }
+    }
+
+    /**
+     * Endpoint para recuperar todas as agendas.
+     * Método HTTP GET na rota /rest/agenda/all.
+     */
+    @GetMapping("/all")
+    public ResponseEntity<List<Agenda>> findAll() {
+        // Chama o serviço para obter a lista de agendas
+        List<Agenda> agendas = agendaService.findAll();
+        // Se a lista estiver vazia, retorna status 204 (No Content)
+        if (agendas == null || agendas.isEmpty()) {
+            return ResponseEntity.noContent().build();
+        }
+        // Caso existam agendas, retorna a lista com status 200 (OK)
+        return ResponseEntity.ok(agendas);
+    }
+
+    /**
+     * Endpoint para atualizar uma agenda existente.
+     * Método HTTP PUT que recebe o ID da agenda na URL e os novos dados no corpo da requisição.
+     */
+    @PutMapping("/{id}")
+    public ResponseEntity<?> update(@PathVariable Long id, @RequestBody AgendaDto input) {
+        try {
+            // Cria uma instância da entidade Agenda e popula com os dados do DTO, definindo o ID a ser atualizado
             Agenda agenda = new Agenda();
             agenda.setCodigo(id);
             agenda.setDataAgendamento(input.getDataAgendamento());
             agenda.setObsAgenda(input.getObsAgenda());
 
-            // Chamar o serviço para atualizar a agenda
-            Agenda updated = this.agendaService.update(agenda);
+            // Chama o serviço para atualizar a agenda e armazena o objeto atualizado
+            Agenda updated = agendaService.update(agenda);
 
-            return Response.status(Response.Status.OK).entity(updated).build();
+            // Retorna a agenda atualizada com status 200 (OK)
+            return ResponseEntity.ok(updated);
         } catch (AgendaNotFoundException e) {
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity(Map.of("mensagem", "Agenda não encontrada para atualização")).build();
+            // Se a agenda não for encontrada para atualização, retorna status 404 (Not Found)
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("mensagem", "Agenda não encontrada para atualização"));
         } catch (SQLException e) {
-            logger.severe("Erro ao atualizar agenda: " + e.getMessage());
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity(Map.of("mensagem", "Erro inesperado ao tentar atualizar a agenda")).build();
+            // Registra o erro e retorna status 500 (Internal Server Error)
+            logger.error("Erro ao atualizar agenda: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("mensagem", "Erro inesperado ao tentar atualizar a agenda"));
         }
     }
 
-    @DELETE
-    @Path("/{id}")
-    public Response delete(@PathParam("id") Long codigo){
+    /**
+     * Endpoint para deletar uma agenda.
+     * Método HTTP DELETE que recebe o ID da agenda a ser removida na URL.
+     */
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
-            this.agendaService.deleteById(codigo);
-            return Response.status(Response.Status.NO_CONTENT).build();
+            // Chama o serviço para deletar a agenda pelo ID informado
+            agendaService.deleteById(id);
+            // Retorna status 204 (No Content) indicando que a exclusão foi bem-sucedida
+            return ResponseEntity.noContent().build();
         } catch (AgendaNotFoundException e) {
-            logger.warning("Agenda não encontrada para exclusão: ID " + codigo);
-            return Response.status(Response.Status.NOT_FOUND)
-                    .entity(Map.of("mensagem", "Agenda não encontrada para exclusão")).build();
-        } catch (SQLException s) {
-            logger.severe("Erro ao deletar agenda: " + s.getMessage());
-            return Response.status(Response.Status.INTERNAL_SERVER_ERROR)
-                    .entity(Map.of("mensagem", "Erro inesperado ao tentar deletar a agenda")).build();
+            // Registra aviso e retorna status 404 (Not Found) caso a agenda não seja encontrada
+            logger.warn("Agenda não encontrada para exclusão: ID " + id);
+            return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                    .body(Map.of("mensagem", "Agenda não encontrada para exclusão"));
+        } catch (SQLException e) {
+            // Registra o erro e retorna status 500 (Internal Server Error)
+            logger.error("Erro ao deletar agenda: " + e.getMessage());
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body(Map.of("mensagem", "Erro inesperado ao tentar deletar a agenda"));
         }
     }
 }
