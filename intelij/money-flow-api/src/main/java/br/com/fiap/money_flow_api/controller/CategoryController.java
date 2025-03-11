@@ -32,7 +32,7 @@ public class CategoryController {
     }
 
     @GetMapping("/categories/{id}")
-    public ResponseEntity <Category> get(@PathVariable Long id){
+    public ResponseEntity <Category> get(@PathVariable Long id){ // 200 sucesso
 
         System.out.println("Buscando categoria...:" + id);
 
@@ -49,4 +49,22 @@ public class CategoryController {
     }
 
     // Apagar categorias
+    @DeleteMapping("/categories/{id}")
+    public ResponseEntity<Object> destroy(@PathVariable Long id){
+        System.out.println("Apagando Categoria...:" + id);
+
+        var category = repository
+                .stream()
+                .filter(c -> c.getId().equals(id))
+                .findFirst();
+
+        if(category.isEmpty()){
+            return ResponseEntity.notFound().build();
+        }
+        repository.remove(category.get());
+        return ResponseEntity.noContent().build(); // 204
+    }
+
+    // Editar categorias
+
 }
