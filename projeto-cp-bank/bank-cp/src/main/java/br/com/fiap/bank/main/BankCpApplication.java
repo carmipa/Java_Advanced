@@ -1,4 +1,4 @@
-package br.com.fiap.bank.bank_cp;
+package br.com.fiap.bank.main;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
