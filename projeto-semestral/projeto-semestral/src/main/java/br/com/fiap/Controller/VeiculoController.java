@@ -1,4 +1,4 @@
-package br.com.fiap.controller;
+package br.com.fiap.Controller;
 
 import br.com.fiap.DTO.VeiculoDto;
 import br.com.fiap.exceptions.veiculoException.VeiculoNotFoundException;
