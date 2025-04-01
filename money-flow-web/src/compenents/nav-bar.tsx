@@ -5,7 +5,7 @@ interface NabvBarProps{
 export default function NabBar(props: NabvBarProps){
 
     const {active} = props
-    const classActive = "border-b-4 border-pink-700"
+    const classActive = "border-b-4 border-primary"
 
     return(
         <nav className="flex justify-between items-center p-6 bg-slate-900">
