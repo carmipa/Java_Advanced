@@ -7,6 +7,9 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.*;
 import lombok.*;
 
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 // @Getter
 // @Setter
