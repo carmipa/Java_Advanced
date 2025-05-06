@@ -76,11 +76,22 @@
 			<artifactId>lombok</artifactId>
 			<scope>annotationProcessor</scope>
 		</dependency>
+<<<<<<< HEAD
 
+=======
+>>>>>>> 7e8ce2e5c1b08f86bede4718ee28864db5b63ae7
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+<<<<<<< HEAD
+=======
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+>>>>>>> 7e8ce2e5c1b08f86bede4718ee28864db5b63ae7
 	</dependencies>
 
 	<build>
